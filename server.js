@@ -4,10 +4,12 @@ import authRoutes from './routes/authRoutes.js';
 import cors from 'cors';
 import bodyParser from "body-parser";
 import cookieParser from 'cookie-parser'; // Ensure you import cookie-parser
+import { dbConnect } from "./utiles/db.js";
 
 const app = express();
 dotenv.config(); // Allow us to use .env variables as process.env.VARIABLE_NAME
 const port = process.env.PORT; // Use a default port if PORT is not set
+dbConnect()
 
 // Middleware to parse JSON bodies
 app.use(express.json());
