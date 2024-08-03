@@ -9,7 +9,7 @@ import { dbConnect } from "./utiles/db.js";
 const app = express();
 dotenv.config(); // Allow us to use .env variables as process.env.VARIABLE_NAME
 const port = process.env.PORT; // Use a default port if PORT is not set
-dbConnect()
+dbConnect() // Connects to database
 
 // Middleware to parse JSON bodies
 app.use(express.json());
