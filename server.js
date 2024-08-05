@@ -3,32 +3,33 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes.js';
 import cors from 'cors';
 import bodyParser from "body-parser";
-import cookieParser from 'cookie-parser'; // Ensure you import cookie-parser
-import { dbConnect } from "./utils/db.js";
+import cookieParser from 'cookie-parser';
+import { connectDB } from './utils/db.js';
+
+dotenv.config();
 
 const app = express();
-dotenv.config(); // Allow us to use .env variables as process.env.VARIABLE_NAME
-const port = process.env.PORT; // Use a default port if PORT is not set
-dbConnect() // Connects to database
+const port = process.env.PORT || 5000;
 
-// Middleware to parse JSON bodies
 app.use(express.json());
 app.use(cors({
-    origin: ['http://localhost:3000'],
-    credentials: true,
+  origin: ['http://localhost:3000'],
+  credentials: true,
 }));
 
-// Body parser and cookie parser
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-// Routes
 app.use('/api', authRoutes);
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+  res.send('Hello World!');
 });
 
-app.listen(port, () => {
+connectDB().then(() => {
+  app.listen(port, () => {
     console.log(`Server running on port ${port}`);
+  });
+}).catch(err => {
+  console.error("Failed to connect to database. Server not started.", err);
 });

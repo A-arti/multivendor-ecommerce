@@ -1,7 +1,7 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 import dotenv from 'dotenv';
 
-dotenv.config(); // Ensure environment variables are loaded
+dotenv.config();
 
 const uri = process.env.DB_URL || "";
 const client = new MongoClient(uri, {
@@ -14,20 +14,20 @@ const client = new MongoClient(uri, {
 
 let db;
 
-const connectDB = async () => {
+export const connectDB = async () => {
   try {
-    // Connect the client to the server
     await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!"
-    );
-    db = client.db("ecommerce");
+    await client.db("ecommerce").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    db = client.db("ecommerce"); // Specify your database name
   } catch (err) {
     console.error("Failed to connect to MongoDB:", err);
-    process.exit(1); // Exit the process with failure
   }
 };
 
-export { db, connectDB };
+export const getDB = () => {
+  if (!db) {
+    throw new Error("Database not connected!");
+  }
+  return db;
+};
