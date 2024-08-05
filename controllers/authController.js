@@ -18,7 +18,7 @@ class AuthControllers {
             httpOnly: true,
           });
           responseReturn(res, 200, { token, message: "Login Success" });
-        } else {
+        } else{
           responseReturn(res, 404, { error: "Wrong Password" });
         }
       } else {
@@ -28,6 +28,26 @@ class AuthControllers {
       responseReturn(res, 500, { error: error.message });
     }
   };
+  // End of admin_login method
+
+  getUser = async (req, res) => {
+    // 
+    const {id, role} = req;
+
+    try {
+      if(user === 'admin'){
+        const db = getDB();
+        const user = await db.collections('admin').findById(id);
+        responseReturn(res, 200, {userInfo : user})
+      }else{
+        console.log("sailor info");
+      }
+      
+    } catch (error) {
+      console.log(error.message);
+    }
+
+  }
 }
 
 export default new AuthControllers();
