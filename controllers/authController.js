@@ -1,7 +1,7 @@
 import adminModel from '../Models/adminModel.js';
-import { responseReturn } from '../utiles/response.js';
+import { responseReturn } from '../utils/response.js';
 import bcrypt from 'bcryptjs';
-import { createToken } from '../utiles/tokenCreate.js';
+import { createToken } from '../utils/tokenCreate.js';
 
 
 class AuthControllers {
