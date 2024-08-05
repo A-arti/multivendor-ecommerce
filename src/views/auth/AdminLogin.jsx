@@ -44,7 +44,7 @@ const AdminLogin = () => {
         if (successMessage) {
             toast.success(successMessage);
             dispatch(messageClear());
-            navigate('/'); // Navigate to the home page after successful login
+            // navigate('/'); // Navigate to the home page after successful login
         }
     }, [dispatch, errorMessage, successMessage, navigate]);
 

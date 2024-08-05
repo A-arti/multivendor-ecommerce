@@ -11,13 +11,16 @@ const initialState = {
 // Async action for admin login
 export const admin_login = createAsyncThunk(
     'auth/admin_login',
-    async (info, { rejectWithValue }) => {
+    async (info, { rejectWithValue, fulfillWithValue }) => {
         try {
             // Using the api instance to make the login request
-            const { data } = await api.post('/admin/login', info);
-            return data;
+            const { data } = await api.post('/admin/login', info, {withCredentials: true});
+            localStorage.setItem('accessToken',data.token);
+            // console.log(data);
+            return fulfillWithValue(data);
         } catch (error) {
             // Handling errors and rejecting the promise with error response data
+            console.log(error.response.data);
             return rejectWithValue(error.response.data);
         }
     }
