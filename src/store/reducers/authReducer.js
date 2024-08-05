@@ -1,51 +1,53 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import api from "../../api/api";
+import api from "../../api/api"; // Importing the api instance
+
 const initialState = {
-    successMessage : '',
-    errorMessage : '',
-    loader : false,
-    userInfo : '',
+    successMessage: '',
+    errorMessage: '',
+    loader: false,
+    userInfo: '',
 }
+
+// Async action for admin login
 export const admin_login = createAsyncThunk(
     'auth/admin_login',
-    async(info, {rejectWithValue, fulfillWithValue}) => {
+    async (info, { rejectWithValue }) => {
         try {
-            const {data} = await api.post('/admin/login', info, {withCredentials : true});
-            //console.log(data);
-            return fulfillWithValue(data);
+            // Using the api instance to make the login request
+            const { data } = await api.post('/admin/login', info);
+            return data;
         } catch (error) {
-            //console.log(error.response.data)
+            // Handling errors and rejecting the promise with error response data
             return rejectWithValue(error.response.data);
         }
     }
+);
 
-)
 const authReducer = createSlice({
-    name : 'auth',
+    name: 'auth',
     initialState,
-    reducers : {
-        messageClear : (state,_) => {
-            state.errorMessage = ""
+    reducers: {
+        messageClear: (state) => {
+            state.errorMessage = "";
+            state.successMessage = "";
         }
-
     },
-    extraReducers : (builder) => {
+    extraReducers: (builder) => {
         builder
-        .addCase(admin_login.pending, (state, { payload }) => {
-            state.loader = true;
-        })
-        .addCase(admin_login.rejected, (state, { payload }) => {
-            state.loader = false;
-            state.errorMessage = payload.error
-        })
-        .addCase(admin_login.fulfilled, (state, { payload }) => {
-            state.loader = false;
-            state.successMessage = payload.message
-        })
-
-
+            .addCase(admin_login.pending, (state) => {
+                state.loader = true;
+            })
+            .addCase(admin_login.rejected, (state, { payload }) => {
+                state.loader = false;
+                state.errorMessage = payload.error;
+            })
+            .addCase(admin_login.fulfilled, (state, { payload }) => {
+                state.loader = false;
+                state.successMessage = payload.message;
+                state.userInfo = payload.token; // Assuming token is the userInfo for this example
+            });
     }
+});
 
-})
-export const {messageClear} = authReducer.actions
-export default authReducer.reducer;  //export reducer
+export const { messageClear } = authReducer.actions;
+export default authReducer.reducer;
