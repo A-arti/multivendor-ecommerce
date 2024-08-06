@@ -1,6 +1,6 @@
-import { RiDashboard2Line } from "react-icons/ri";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { BiCategory } from "react-icons/bi";
+import { MdDashboard } from "react-icons/md";
+import { HiShoppingBag } from "react-icons/hi2";
+import { MdCategory } from "react-icons/md";
 import { FaUserTimes, FaUsers } from "react-icons/fa";
 import { MdPayment } from "react-icons/md";
 import { FaCodePullRequest } from "react-icons/fa6";
@@ -11,21 +11,21 @@ export const allNav = [
     {
         id : 1,
         title : 'Dashboard',
-        icon : <RiDashboard2Line />,
+        icon : <MdDashboard />,
         role : 'admin',
         path : '/admin/dashboard'
     },
     {
         id : 2,
         title : 'Orders',
-        icon : <AiOutlineShoppingCart />,
+        icon : <HiShoppingBag />,
         role : 'admin',
         path: '/admin/dashboard/orders'
     },
     {
         id : 3,
         title : 'Category',
-        icon : <BiCategory  />,
+        icon : <MdCategory />,
         role : 'admin',
         path: '/admin/dashboard/category'
     },
