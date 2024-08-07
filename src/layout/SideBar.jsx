@@ -26,7 +26,7 @@ const SideBar = ({ showSidebar, setShowSidebar }) => {
                         {
                             allNav.map((item, index) =>
                                 <li key={index}>
-                                    <Link to={item.path} className={`${pathname === item.path ? 'bg-[#333333] shadow-md shadow-grey-900 text-white duration-500 w-[65%] ml-6 justify-start items-center' : 'justify-start items-center text-[#030811]  duration-200 w-[200px] ml-6'} px-[12px] py-[10px] ml-4 rounded-md flex gap-[12px] hover:pl-4 transition-all w-full mb-1`} >
+                                    <Link to={item.path} className={`${pathname === item.path ? 'bg-[#333333] shadow-md shadow-grey-900 text-white duration-500 w-[60%] ml-6 justify-start items-center' : 'justify-start items-center text-[#030811]  duration-200 w-[200px] ml-6'} px-[12px] py-[10px] ml-4 rounded-md flex gap-[12px] hover:pl-4 transition-all w-full mb-1`} >
 
                                         <span>{item.icon}</span>
                                         <span>{item.title}</span>
