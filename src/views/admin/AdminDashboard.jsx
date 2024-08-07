@@ -193,7 +193,7 @@ function AdminDashboard() {
 
               <tbody>
 
-                {
+              {
                   [1, 2, 3, 4, 5].map((d, i) => <tr key={i}>
                     <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>#34344</td>
                     <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>$454</td>
@@ -220,4 +220,4 @@ function AdminDashboard() {
   );
 }
 
-export default AdminDashboard;
+export default AdminDashboard;
