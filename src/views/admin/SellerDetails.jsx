@@ -4,11 +4,11 @@ const SellerDetails = () => {
     return (
         <div className='px-2 lg:px-7 pt-5'>
             <h1 className='text-[20px] font-bold mb-3'>Seller Details</h1>
-            <div className='w-full p-4 bg-[#6a5fdf] rounded-md'>
-                <div className='w-full flex flex-wrap text-[#d0d2d6]'>
+            <div className='w-full p-4 bg-[#fff] rounded-md border'>
+                <div className='w-full flex flex-wrap text-[#6a6a6b]'>
                     <div className='w-3/12 flex justify-center items-center py-3'>
                         <div>
-                            <img className='w-full h-[230px]' src="http://localhost:3000/images/demo.jpg" alt="" />
+                            <img className='w-full h-[230px]' src="http://localhost:3000/images/diya.jpeg" alt="" />
                         </div>
                     </div>
                     <div className='w-4/12'>
@@ -16,7 +16,7 @@ const SellerDetails = () => {
                             <div className='py-2 text-lg'>
                                 <h2>Basic Info</h2>
                             </div>
-                            <div className='flex justify-between text-sm flex-col gap-2 p-4 bg-[#9e97e9] rounded-md'>
+                            <div className='flex justify-between text-sm flex-col gap-2 p-4 bg-[#f0f0f0] rounded-md'>
                                 <div className='flex gap-2 font-bold text-[#000000]'>
                                     <span>Name:</span>
                                     <span>Diya Bala</span>
@@ -45,7 +45,7 @@ const SellerDetails = () => {
                             <div className='py-2 text-lg'>
                                 <h2>Address</h2>
                             </div>
-                            <div className='flex justify-between text-sm flex-col gap-2 p-4 bg-[#9e97e9] rounded-md'>
+                            <div className='flex justify-between text-sm flex-col gap-2 p-4 bg-[#f0f0f0] rounded-md'>
                                 <div className='flex gap-2 font-bold text-[#000000]'>
                                     <span>Shop Name:</span>
                                     <span>My Shop</span>
@@ -69,7 +69,7 @@ const SellerDetails = () => {
                 <div>
                     <form>
                         <div className='flex gap-4 py-3'>
-                            <select className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#6a5fdf] border border-slate-700 rounded-md text-[#d0d2d6]'>
+                            <select className='px-4 py-2 focus:border-gray-600 outline-none bg-[#fff] border border-slate-400 rounded-md text-[#6a6a6b]'>
                                 <option value="">--Select Status--</option>
                                 <option value="active">Active</option>
                                 <option value="deactive">Deactive</option>

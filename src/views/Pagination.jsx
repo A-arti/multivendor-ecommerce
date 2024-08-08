@@ -22,7 +22,7 @@ const Pagination = ({pageNumber,setPageNumber,totalItem,parPage,showItem}) => {
         const btns = []
         for (let i = startPage; i < endPage; i++) {
             btns.push(
-                <li onClick={()=>setPageNumber(i)} className={` ${pageNumber === i ? 'bg-indigo-300 shadow-lg shadow-indigo-300/50 text-white' : 'bg-slate-600 hover:bg-indigo-400 shadow-lg hover:shadow-indigo-500/50 hover:text-white text-[#d0d2d6]'} w-[33px] h-[33px] rounded-full flex justify-center items-center cursor-pointer `}>
+                <li onClick={()=>setPageNumber(i)} className={` ${pageNumber === i ? 'bg-indigo-500 text-white' : ' hover:bg-indigo-500 hover:text-white text-[#8e8e90] border border-slate-400'} w-[33px] h-[33px] rounded-md flex justify-center items-center cursor-pointer`}>
                     {i}                    
                 </li>
             ) 
@@ -32,7 +32,7 @@ const Pagination = ({pageNumber,setPageNumber,totalItem,parPage,showItem}) => {
     return (
         <ul className='flex gap-3'>
             {
-                pageNumber > 1 && <li onClick={() => setPageNumber(pageNumber - 1)} className='w-[33px] h-[33px] rounded-full flex justify-center items-center bg-slate-300 text-[#000000] cursor-pointer'>
+                pageNumber > 1 && <li onClick={() => setPageNumber(pageNumber - 1)} className='w-[33px] h-[33px] rounded-full flex justify-center items-center bg-slate-100 text-[#000000] cursor-pointer'>
                     <MdOutlineKeyboardDoubleArrowLeft />
                 </li>
             }
@@ -40,7 +40,7 @@ const Pagination = ({pageNumber,setPageNumber,totalItem,parPage,showItem}) => {
                 createBtn()
             }
             {
-                pageNumber < totalPage && <li onClick={() => setPageNumber(pageNumber + 1)} className='w-[33px] h-[33px] rounded-full flex justify-center items-center bg-slate-300 text-[#000000] cursor-pointer'>
+                pageNumber < totalPage && <li onClick={() => setPageNumber(pageNumber + 1)} className='w-[33px] h-[33px] rounded-full flex justify-center items-center bg-slate-100 text-[#000000] cursor-pointer'>
                     <MdOutlineKeyboardDoubleArrowRight  />
                 </li>
             }
